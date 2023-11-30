@@ -10,10 +10,10 @@ public class Main {
     private static final int MAX_PRECIO = 150;
     private static final int MIN_PRECIO = 20;
     private static final int NUMERO_DE_PEDIDOS = 3;
+    private static Random random = new Random();
 
     private static ArrayList<Producto> crearProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
-        Random random = new Random();
         for (String nombre : NOMBRES_PRODUCTOS) {
             int precio = random.nextInt(MAX_PRECIO - MIN_PRECIO + 1) + MIN_PRECIO;
             productos.add(new Producto(nombre, precio));
@@ -23,17 +23,15 @@ public class Main {
 
     private static ArrayList<Usuario> crearUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        Random random = new Random();
         for (String nombre : NOMBRES_USUARIOS) {
             String direccion = DIRECCIONES[random.nextInt(DIRECCIONES.length)];
-            usuarios.add(new Usuario(nombre, direccion, new ArrayList<Pedido>()));
+            usuarios.add(new Usuario(nombre, direccion, new ArrayList<>()));
         }
         return usuarios;
     }
 
     private static ArrayList<Pedido> crearPedidos(ArrayList<Usuario> usuarios, ArrayList<Producto> productos) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
-        Random random = new Random();
         for (int i = 0; i < NUMERO_DE_PEDIDOS; i++) {
             Usuario usuario = usuarios.get(random.nextInt(usuarios.size()));
             ArrayList<Producto> productosPedido = new ArrayList<>();
