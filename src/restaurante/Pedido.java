@@ -1,12 +1,12 @@
 package restaurante;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido {
     private Usuario cliente;
-    private ArrayList<Producto> productos;
+    private List<Producto> productos;
 
-    public Pedido(Usuario cliente, ArrayList<Producto> productos) {
+    public Pedido(Usuario cliente, List<Producto> productos) {
         this.cliente = cliente;
         this.productos = productos;
     }
@@ -14,14 +14,16 @@ public class Pedido {
     public Usuario getCliente() {
         return cliente;
     }
-    public ArrayList<Producto> getProductos() {
+
+    public List<Producto> getProductos() {
         return productos;
     }
 
     public void setCliente(Usuario cliente) {
         this.cliente = cliente;
     }
-    public void setProductos(ArrayList<Producto> productos) {
+
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
 
@@ -34,12 +36,13 @@ public class Pedido {
     }
 
     public void generarReporte() {
-        System.out.println("------------------------");
-        System.out.println("Pedido de " + cliente.getNombre());
-        System.out.println("Productos:");
+        StringBuilder reporte = new StringBuilder("------------------------\n");
+        reporte.append("Pedido de ").append(cliente.getNombre()).append("\n");
+        reporte.append("Productos:\n");
         for (Producto producto : productos) {
-            System.out.println(producto.getNombre() + " - " + producto.getPrecio());
+            reporte.append(producto.getNombre()).append(" - ").append(producto.getPrecio()).append("\n");
         }
-        System.out.println("Total: " + calcularTotal());
+        reporte.append("Total: ").append(calcularTotal()).append("\n");
+        System.out.println(reporte.toString());
     }
 }

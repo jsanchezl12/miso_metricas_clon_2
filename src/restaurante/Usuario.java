@@ -1,44 +1,43 @@
 package restaurante;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Usuario {
     private String nombre;
     private String direccion;
-    private ArrayList<Pedido> pedidos;
-
-    public Usuario(String nombre, String direccion, ArrayList<Pedido> pedidos) {
+    private List<Pedido> pedidos;
+    public Usuario(String nombre, String direccion, List<Pedido> pedidos) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.pedidos = pedidos;
     }
-
     public String getNombre() {
         return nombre;
     }
     public String getDireccion() {
         return direccion;
     }
-    public ArrayList<Pedido> getPedidos() {
+    public List<Pedido> getPedidos() {
         return pedidos;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public void setPedidos(ArrayList<Pedido> pedidos) {
+    public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
 
     public void generarReporte() {
         int total = calcularTotal();
-        System.out.println("------------------------");
-        System.out.println("El total de compras para " + nombre + " es: " + total);
-        ArrayList<Pedido> pedidosOrdenados = ordenarPedidosPorPrecio();
+        StringBuilder reporte = new StringBuilder("------------------------\n");
+        reporte.append("El total de compras para ").append(nombre).append(" es: ").append(total).append("\n");
+        System.out.println(reporte.toString());
+        List<Pedido> pedidosOrdenados = ordenarPedidosPorPrecio();
         for(Pedido pedido : pedidosOrdenados) {
             pedido.generarReporte();
         }
@@ -54,8 +53,8 @@ public class Usuario {
         return total;
     }
 
-    public ArrayList<Pedido> ordenarPedidosPorPrecio() {
-        ArrayList<Pedido> pedidosOrdenados = new ArrayList<>();
+    public List<Pedido> ordenarPedidosPorPrecio() {
+        List<Pedido> pedidosOrdenados = new ArrayList<>();
         for (Pedido pedido : pedidos) {
             pedidosOrdenados.add(pedido);
         }

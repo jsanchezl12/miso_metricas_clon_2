@@ -2,4 +2,4 @@
 
 
 javac -d bin src/restaurante/*.java
-java -cp bin restaurante.Restaurante  
+java -cp bin restaurante.Main  
