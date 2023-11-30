@@ -1,7 +1,7 @@
 package restaurante;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Main {
     private static final String[] NOMBRES_PRODUCTOS = { "Hamburguesa", "Papas", "Refresco", "Helado" };
@@ -10,7 +10,7 @@ public class Main {
     private static final int MAX_PRECIO = 150;
     private static final int MIN_PRECIO = 20;
     private static final int NUMERO_DE_PEDIDOS = 3;
-    private static Random random = new Random();
+    private static SecureRandom random = new SecureRandom(); // Compliant for security-sensitive use cases
 
     private static ArrayList<Producto> crearProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
